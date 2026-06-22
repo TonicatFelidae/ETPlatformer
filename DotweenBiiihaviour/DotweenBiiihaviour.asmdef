@@ -1,0 +1,16 @@
+{
+    "name": "DotweenBiiihaviour",
+    "rootNamespace": "",
+    "references": [
+        "GUID:99175bb7257358641847db8c5d2c61f9"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
