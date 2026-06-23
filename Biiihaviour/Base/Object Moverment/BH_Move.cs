@@ -64,7 +64,7 @@ namespace ET.GO.Behaviour
         }
         public virtual void MoveToPoint2DLeftRight(int direction)
         {
-            MoveFourWay(direction,0);
+            MoveFourWay(direction, 0);
         }
         private void act_MoveLeft()
         {
@@ -84,7 +84,7 @@ namespace ET.GO.Behaviour
         }
         private void act_Jump()
         {
-            Rigidbody2D.AddForce(Vector2.up * 15, ForceMode2D.Impulse);
+            Rigidbody2D.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
             Debug.Log("jump");
         }
         //update
@@ -93,7 +93,7 @@ namespace ET.GO.Behaviour
         /// </summary>
         public override void Update()
         {
-            if (moveX != 0 ||  moveY != 0) MoveFourWay(moveX,moveY);
+            if (moveX != 0 || moveY != 0) MoveFourWay(moveX, moveY);
             if (isJump) act_Jump();
             moveX = 0;
             moveY = 0;
@@ -110,15 +110,15 @@ namespace ET.GO.Behaviour
         {
             get
             {
-                if (listPos!=null && listPos.Count>0)
+                if (listPos != null && listPos.Count > 0)
                 {
                     Vector2[] dat = (listPos).ToArray();
-                    Vector3[] ret = new Vector3[dat.Length+1];
+                    Vector3[] ret = new Vector3[dat.Length + 1];
                     ret[0] = transformx.position;
                     ret[0].z = 0;
                     for (int i = 0; i < dat.Length; i++)
                     {
-                        ret[i+1] = dat[i];
+                        ret[i + 1] = dat[i];
                     }
                     return ret;
                 }
@@ -126,7 +126,7 @@ namespace ET.GO.Behaviour
             }
         }
         Queue<Vector2> listPos;
-        public BH_MoveTopDown SetMultiplySpeed(float verticle,float horizontal)
+        public BH_MoveTopDown SetMultiplySpeed(float verticle, float horizontal)
         {
             speed_verticle = verticle;
             speed_horizontal = horizontal;
@@ -148,7 +148,7 @@ namespace ET.GO.Behaviour
         }
         public void Move()
         {
-            Vector2 dir = new Vector2(moveX,moveY);
+            Vector2 dir = new Vector2(moveX, moveY);
             transformx.Translate(Time.fixedDeltaTime * dir.normalized * m_speed);
         }
         public void Move(Vector2 dir)
@@ -240,7 +240,7 @@ namespace ET.GO.Behaviour
         }
         public void Move()
         {
-            Vector3 dir = new Vector3(moveX, moveY,0);
+            Vector3 dir = new Vector3(moveX, moveY, 0);
             Rigidbody2D.MovePosition(transformx.position + Time.deltaTime * dir.normalized * m_speed);
         }
         public void Move(Vector2 dir)
@@ -269,13 +269,13 @@ namespace ET.GO.Behaviour
         }
     }
 
-    public class BH_MoveTopDown_Velocity: Biiihaviour
+    public class BH_MoveTopDown_Velocity : Biiihaviour
     {
         Vector2 velocity;
         MoveType moveType;
         public void SetMoveType(MoveType moveType)
         {
-            this.moveType = moveType;   
+            this.moveType = moveType;
         }
         #region inputManager
         /// <summary>
@@ -291,7 +291,7 @@ namespace ET.GO.Behaviour
             velocity = Vector2.zero;
         }
         #endregion
-        public void Move(Vector2 velocity,float moveSpeed)
+        public void Move(Vector2 velocity, float moveSpeed)
         {
             m_speed = moveSpeed;
             Move(velocity);
@@ -322,7 +322,7 @@ namespace ET.GO.Behaviour
         }
     }
     public enum MoveType
-    { 
+    {
         FourWay,
         Forward
 
