@@ -31,10 +31,26 @@ namespace ET.GO.Behaviour
         {
             moveY += -1;
         }
+        private Vector2 jumpDirection = Vector2.up;
+        private float jumpPower = 1.0f;
+
         public virtual void Jump()
         {
-            isJump = true;
+            Jump(Vector2.up, 1.0f);
         }
+
+        public virtual void Jump(Vector2 direction)
+        {
+            Jump(direction, 1.0f);
+        }
+
+        public virtual void Jump(Vector2 direction, float power)
+        {
+            isJump = true;
+            jumpDirection = direction.normalized;
+            jumpPower = Mathf.Max(power, 0.1f);
+        }
+
         //hide function logic
 
 
@@ -84,7 +100,9 @@ namespace ET.GO.Behaviour
         }
         private void act_Jump()
         {
-            Rigidbody2D.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+            Rigidbody2D.AddForce(jumpDirection * 10 * jumpPower, ForceMode2D.Impulse);
+            jumpDirection = Vector2.up;
+            jumpPower = 1.0f;
             Debug.Log("jump");
         }
         //update
