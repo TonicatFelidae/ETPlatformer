@@ -47,7 +47,7 @@ namespace ET.GO.Behaviour
         public virtual void Jump(Vector2 direction, float power)
         {
             isJump = true;
-            jumpDirection = direction.normalized;
+            jumpDirection = direction;
             jumpPower = Mathf.Max(power, 0.1f);
         }
 
