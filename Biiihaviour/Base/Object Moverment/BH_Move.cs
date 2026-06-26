@@ -54,7 +54,7 @@ namespace ET.GO.Behaviour
         public virtual void ResetJump()
         {
             isJump = false;
-            jumpDirection = Vector2.up;
+            //jumpDirection = Vector2.up;
             jumpPower = 1.0f;
         }
 
