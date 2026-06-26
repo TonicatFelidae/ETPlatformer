@@ -51,6 +51,13 @@ namespace ET.GO.Behaviour
             jumpPower = Mathf.Max(power, 0.1f);
         }
 
+        public virtual void ResetJump()
+        {
+            isJump = false;
+            jumpDirection = Vector2.up;
+            jumpPower = 1.0f;
+        }
+
         //hide function logic
 
 
@@ -100,9 +107,11 @@ namespace ET.GO.Behaviour
         }
         private void act_Jump()
         {
+            Vector2 currentVelocity = Rigidbody2D.linearVelocity;
+            currentVelocity.y = 0f;
+            Rigidbody2D.linearVelocity = currentVelocity;
             Rigidbody2D.AddForce(jumpDirection * 10 * jumpPower, ForceMode2D.Impulse);
-            jumpDirection = Vector2.up;
-            jumpPower = 1.0f;
+            ResetJump();
             Debug.Log("jump");
         }
         //update
